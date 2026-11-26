@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-11-23 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "achievement",
+  "col1",
+  "achieved_on",
+  "xp_awarded",
+  "seen"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "search_index": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "achievement",
+   "fieldtype": "Link",
+   "label": "Achievement",
+   "options": "Atomic Achievement",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "achieved_on",
+   "fieldtype": "Datetime",
+   "label": "Achieved on",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "xp_awarded",
+   "fieldtype": "Int",
+   "label": "XP awarded",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "seen",
+   "fieldtype": "Check",
+   "label": "Seen",
+   "description": "Celebration already shown in the app"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-23 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Atomic Streak",
+ "name": "Atomic User Achievement",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "permlevel": 0
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

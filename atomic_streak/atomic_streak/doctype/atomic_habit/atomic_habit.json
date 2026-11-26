@@ -1,0 +1,322 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-11-23 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "habit_name",
+  "description",
+  "habit_type",
+  "col1",
+  "category",
+  "icon",
+  "color",
+  "status",
+  "schedule_section",
+  "frequency",
+  "interval_days",
+  "schedule",
+  "col2",
+  "start_date",
+  "end_date",
+  "time_of_day",
+  "preferred_time",
+  "target_section",
+  "daily_target",
+  "target_unit",
+  "col3",
+  "difficulty",
+  "sort_order",
+  "reminder_section",
+  "reminder_enabled",
+  "col4",
+  "reminder_time",
+  "notes_section",
+  "notes",
+  "stats_section",
+  "current_streak",
+  "longest_streak",
+  "col5",
+  "total_completions",
+  "last_completed_on",
+  "pause_section",
+  "pauses"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "search_index": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "habit_name",
+   "fieldtype": "Data",
+   "label": "Habit Name",
+   "reqd": 1,
+   "in_list_view": 1,
+   "length": 140
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "habit_type",
+   "fieldtype": "Select",
+   "label": "Habit Type",
+   "options": "Build\nBreak\nOne-time",
+   "default": "Build",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Atomic Habit Category",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Data",
+   "label": "Icon",
+   "default": "sparkles"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Data",
+   "label": "Color",
+   "default": "#7657F6"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nPaused\nArchived\nCompleted",
+   "default": "Active",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "schedule_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "label": "Frequency",
+   "options": "Daily\nSpecific Days\nEvery N Days",
+   "default": "Daily",
+   "reqd": 1
+  },
+  {
+   "fieldname": "interval_days",
+   "fieldtype": "Int",
+   "label": "Every N days",
+   "default": "2",
+   "depends_on": "eval:doc.frequency=='Every N Days'"
+  },
+  {
+   "fieldname": "schedule",
+   "fieldtype": "Table",
+   "label": "Weekdays",
+   "options": "Atomic Habit Schedule",
+   "depends_on": "eval:doc.frequency=='Specific Days'"
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "time_of_day",
+   "fieldtype": "Select",
+   "label": "Time of day",
+   "options": "Anytime\nMorning\nAfternoon\nEvening\nNight",
+   "default": "Anytime"
+  },
+  {
+   "fieldname": "preferred_time",
+   "fieldtype": "Data",
+   "label": "Preferred time",
+   "length": 5,
+   "description": "24-hour HH:MM"
+  },
+  {
+   "fieldname": "target_section",
+   "fieldtype": "Section Break",
+   "label": "Target"
+  },
+  {
+   "fieldname": "daily_target",
+   "fieldtype": "Float",
+   "label": "Daily Target",
+   "default": "1",
+   "reqd": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "target_unit",
+   "fieldtype": "Data",
+   "label": "Target Unit",
+   "default": "times",
+   "length": 40
+  },
+  {
+   "fieldname": "col3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "difficulty",
+   "fieldtype": "Select",
+   "label": "Difficulty",
+   "options": "Easy\nMedium\nHard",
+   "default": "Medium"
+  },
+  {
+   "fieldname": "sort_order",
+   "fieldtype": "Int",
+   "label": "Sort order",
+   "default": "0"
+  },
+  {
+   "fieldname": "reminder_section",
+   "fieldtype": "Section Break",
+   "label": "Reminder"
+  },
+  {
+   "fieldname": "reminder_enabled",
+   "fieldtype": "Check",
+   "label": "Reminder Enabled"
+  },
+  {
+   "fieldname": "col4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reminder_time",
+   "fieldtype": "Data",
+   "label": "Reminder Time",
+   "length": 5,
+   "depends_on": "reminder_enabled",
+   "description": "24-hour HH:MM, in the user's timezone"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "stats_section",
+   "fieldtype": "Section Break",
+   "label": "Progress (calculated)",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "current_streak",
+   "fieldtype": "Int",
+   "label": "Current streak",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "longest_streak",
+   "fieldtype": "Int",
+   "label": "Longest streak",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "col5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_completions",
+   "fieldtype": "Int",
+   "label": "Total completions",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "last_completed_on",
+   "fieldtype": "Date",
+   "label": "Last completed on",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pause_section",
+   "fieldtype": "Section Break",
+   "label": "Pauses",
+   "collapsible": 1,
+   "description": "Paused and archived days are skipped by the streak engine: they neither count nor break a streak."
+  },
+  {
+   "fieldname": "pauses",
+   "fieldtype": "Table",
+   "label": "Pause periods",
+   "options": "Atomic Habit Pause",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-23 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Atomic Streak",
+ "name": "Atomic Habit",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "permlevel": 0
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "habit_name",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "habit_name",
+ "track_changes": 1
+}

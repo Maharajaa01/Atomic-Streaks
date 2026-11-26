@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "atomic_streak",
+  "description": "Atomic Streak - Vue PWA for habit tracking (frontend lives in ./frontend)",
+  "scripts": {
+    "postinstall": "cd frontend && npm ci --no-audit --no-fund",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test"
+  }
+}

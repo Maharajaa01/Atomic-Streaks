@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F8FC" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B1020" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Atomic Streak - build good habits, break bad ones, and keep your streak alive." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Atomic Streak" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/assets/atomic_streak/frontend/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/assets/atomic_streak/frontend/icons/logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/atomic_streak/frontend/icons/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/atomic_streak/frontend/icons/apple-touch-icon.png" />
+    <title>Atomic Streak</title>
+    <script>
+      // apply the saved theme before first paint (no light/dark flash)
+      ;(function () {
+        try {
+          var t = localStorage.getItem("atomic:theme") || "System"
+          var dark = t === "Dark" || (t === "System" && matchMedia("(prefers-color-scheme: dark)").matches)
+          if (dark) document.documentElement.classList.add("dark")
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

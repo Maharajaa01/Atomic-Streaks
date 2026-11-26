@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-11-23 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "habit",
+  "completion_date",
+  "col1",
+  "value",
+  "target",
+  "status",
+  "meta_section",
+  "completed_at",
+  "source",
+  "client_id",
+  "col2",
+  "xp_awarded",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User",
+   "reqd": 1,
+   "search_index": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "habit",
+   "fieldtype": "Link",
+   "label": "Habit",
+   "options": "Atomic Habit",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "completion_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1,
+   "description": "The user's local calendar date"
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "label": "Value",
+   "default": "1",
+   "non_negative": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "target",
+   "fieldtype": "Float",
+   "label": "Target (at the time)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Completed\nPartial",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "meta_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Recorded at",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "App\nOffline\nRoutine",
+   "default": "App"
+  },
+  {
+   "fieldname": "client_id",
+   "fieldtype": "Data",
+   "label": "Client ID",
+   "unique": 1,
+   "read_only": 1,
+   "length": 64,
+   "description": "Idempotency key from the device; makes offline re-sends safe"
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "xp_awarded",
+   "fieldtype": "Int",
+   "label": "XP awarded",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-23 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Atomic Streak",
+ "name": "Atomic Habit Completion",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "permlevel": 0
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "completion_date",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

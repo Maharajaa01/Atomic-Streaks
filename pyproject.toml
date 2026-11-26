@@ -9,6 +9,8 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     # "frappe~=15.0.0" # Installed and managed by bench.
+    "anthropic>=1.17,<2",  # optional AI coach (only used when enabled in Atomic Streak Settings)
+    "pywebpush>=2.0.3,<3",  # Web Push (VAPID) for reminders; no third-party push service
 ]
 
 [build-system]

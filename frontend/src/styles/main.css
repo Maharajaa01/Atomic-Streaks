@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		-webkit-tap-highlight-color: transparent;
+		text-size-adjust: 100%;
+		/* app feel: no rubber-band bounce / pull-to-refresh on the page itself */
+		overscroll-behavior: none;
+	}
+	/* no double-tap-zoom delay on taps */
+	a, button, label, input, select, textarea, [role="tab"] {
+		touch-action: manipulation;
+	}
+	/* long-pressing controls shouldn't select text or pop up the link/copy menu, like a native app */
+	button, a, label, [role="tab"], nav, img, svg {
+		-webkit-user-select: none;
+		user-select: none;
+		-webkit-touch-callout: none;
+	}
+	body {
+		overscroll-behavior: none;
+		@apply bg-ink-50 font-sans text-ink-900 antialiased dark:bg-night-950 dark:text-ink-100;
+		font-feature-settings: "ss01", "cv11";
+	}
+	h1, h2, h3 {
+		@apply font-display tracking-tight;
+		font-variation-settings: "opsz" 48;
+	}
+	:focus-visible {
+		@apply outline-none ring-[3px] ring-grape-400/60 ring-offset-2 ring-offset-white dark:ring-offset-night-900;
+	}
+	input::-ms-reveal {
+		display: none;
+	}
+}
+
+@layer components {
+	.field-label {
+		@apply mb-1.5 block text-[13px] font-semibold text-ink-700 dark:text-ink-200;
+	}
+	.field {
+		@apply h-[52px] w-full rounded-2xl border-2 border-ink-200 bg-white px-4 text-[16px] text-ink-900
+			placeholder:text-ink-400 transition-colors
+			hover:border-ink-300 focus:border-grape-500 focus:outline-none focus:ring-4 focus:ring-grape-500/15
+			disabled:opacity-60
+			dark:border-night-700 dark:bg-night-850 dark:text-ink-100 dark:placeholder:text-ink-500 dark:hover:border-night-600
+			dark:focus:border-grape-400;
+	}
+	.field-invalid {
+		@apply border-blush-500 focus:border-blush-500 focus:ring-blush-500/15 dark:border-blush-500;
+	}
+	.link {
+		@apply font-semibold text-grape-600 underline-offset-4 hover:underline dark:text-grape-300;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

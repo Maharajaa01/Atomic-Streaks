@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-23 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "accounts_section",
+  "allow_signup",
+  "ai_section",
+  "ai_enabled",
+  "ai_provider",
+  "ai_model",
+  "ai_col",
+  "ai_api_key",
+  "ai_daily_message_limit",
+  "push_section",
+  "push_enabled",
+  "vapid_subject",
+  "push_col",
+  "vapid_public_key",
+  "vapid_private_key",
+  "summary_section",
+  "weekly_summary_day"
+ ],
+ "fields": [
+  {
+   "fieldname": "accounts_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "fieldname": "allow_signup",
+   "fieldtype": "Check",
+   "label": "Allow public sign-up at /atomic-streak/signup",
+   "default": "1"
+  },
+  {
+   "fieldname": "ai_section",
+   "fieldtype": "Section Break",
+   "label": "AI Coach",
+   "description": "Optional. Without a provider the coach gives rule-based tips from the user's own data."
+  },
+  {
+   "fieldname": "ai_enabled",
+   "fieldtype": "Check",
+   "label": "Enable AI provider"
+  },
+  {
+   "fieldname": "ai_provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "Anthropic",
+   "default": "Anthropic",
+   "depends_on": "ai_enabled",
+   "description": "Claude, called from this server only. The key never reaches the browser."
+  },
+  {
+   "fieldname": "ai_model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "default": "claude-opus-5-5",
+   "depends_on": "ai_enabled"
+  },
+  {
+   "fieldname": "ai_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ai_api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "depends_on": "ai_enabled",
+   "length": 512
+  },
+  {
+   "fieldname": "ai_daily_message_limit",
+   "fieldtype": "Int",
+   "label": "Messages per user per day",
+   "default": "30",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "push_section",
+   "fieldtype": "Section Break",
+   "label": "Push Notifications"
+  },
+  {
+   "fieldname": "push_enabled",
+   "fieldtype": "Check",
+   "label": "Enable web push"
+  },
+  {
+   "fieldname": "vapid_subject",
+   "fieldtype": "Data",
+   "label": "VAPID contact",
+   "description": "mailto: address or https URL sent to push services",
+   "depends_on": "push_enabled"
+  },
+  {
+   "fieldname": "push_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vapid_public_key",
+   "fieldtype": "Small Text",
+   "label": "VAPID public key",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vapid_private_key",
+   "fieldtype": "Password",
+   "label": "VAPID private key",
+   "read_only": 1,
+   "length": 512
+  },
+  {
+   "fieldname": "summary_section",
+   "fieldtype": "Section Break",
+   "label": "Summaries"
+  },
+  {
+   "fieldname": "weekly_summary_day",
+   "fieldtype": "Select",
+   "label": "Weekly summary day",
+   "options": "Monday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday",
+   "default": "Sunday"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-23 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Atomic Streak",
+ "name": "Atomic Streak Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "permlevel": 0
+  },
+  {
+   "role": "Atomic Streak Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "permlevel": 0
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}

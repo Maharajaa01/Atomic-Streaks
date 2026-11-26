@@ -148,6 +148,11 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
+scheduler_events = {
+	# reminders are matched to each user's own timezone, so this runs often and checks who is due
+	"cron": {"*/5 * * * *": ["atomic_streak.services.reminders.run"]},
+}
+
 # scheduler_events = {
 # 	"all": [
 # 		"atomic_streak.tasks.all"
@@ -247,3 +252,21 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+# ------------------------------------------------------------------------- Atomic Streak
+after_install = "atomic_streak.setup.install.after_install"
+after_migrate = "atomic_streak.setup.install.after_migrate"
+
+doc_events = {
+	"User": {
+		"on_trash": "atomic_streak.setup.cleanup.on_user_trash",
+	},
+}
+
+after_request = ["atomic_streak.http.after_request"]
+
+# The Vue app lives at /atomic-streak (Frappe's own /login stays untouched for ERP staff).
+website_route_rules = [
+	{"from_route": "/atomic-streak", "to_route": "atomic_streak_app"},
+	{"from_route": "/atomic-streak/<path:app_path>", "to_route": "atomic_streak_app"},
+]
